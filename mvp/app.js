@@ -1,10 +1,12 @@
 const express = require("express");
-
 const app = express();
 const http = require("http");
 const { isObject } = require("util");
 const server = http.createServer(app);
-const port = 3000;
-server.listen(port, () => {
-  console.log(`Server is running on port : ${port}`);
+
+const GameSocketService = require("./services/game_socket");
+GameSocketService.init(server);
+
+server.listen(3000, () => {
+  console.log("listening on *:3000");
 });
